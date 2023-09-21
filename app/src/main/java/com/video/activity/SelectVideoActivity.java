@@ -2,6 +2,9 @@ package com.video.activity;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -15,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 
 import com.video.R;
+import com.video.adapter.SelectVideoAdapter;
 import com.video.databinding.ActivitySelectVideoBinding;
 import com.video.entity.VideoInfo;
 import com.video.utils.StatusBarUtil;
@@ -43,6 +47,14 @@ public class SelectVideoActivity extends AppCompatActivity {
         for (VideoInfo videoInfo : list) {
             videoInfo.setBitmap(getVideoThumbnail(videoInfo.getPath()));
         }
+
+        SelectVideoAdapter adapter = new SelectVideoAdapter();
+
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 3);
+        binding.listView.setLayoutManager(layoutManager);
+
+        adapter.add(list);
+        binding.listView.setAdapter(adapter);
     }
 
     /**
@@ -96,7 +108,8 @@ public class SelectVideoActivity extends AppCompatActivity {
             try {
                 retriever.release();
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
+//                throw new RuntimeException(e);
             }
         }
         return b;

@@ -301,8 +301,8 @@ public class EditVideoActivity extends BaseActivity implements View.OnClickListe
      */
     @SuppressLint("SetTextI18n")
     private void updateVideoProgress(long currentTime) {
-        String currentStr = VideoUtils.stringForTime((int) currentTime);
-        String durationStr = VideoUtils.stringForTime((int) binding.timeLineView.getTotalDurationMs());
+        String currentStr = VideoUtils.stringForTime(currentTime);
+        String durationStr = VideoUtils.stringForTime(binding.timeLineView.getTotalDurationMs());
         binding.currentPosition.setText(currentStr + "/" + durationStr);
     }
 

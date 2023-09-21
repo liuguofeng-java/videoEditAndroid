@@ -32,12 +32,17 @@ public class VideoUtils {
         return duration;
     }
 
-    public static String stringForTime(int timeMs) {
+    /**
+     *
+     * @param timeMs
+     * @return
+     */
+    public static String stringForTime(long timeMs) {
         Formatter formatter = new Formatter(new StringBuilder(), Locale.getDefault());
-        int totalSeconds = timeMs / 1000;
-        int seconds = totalSeconds % 60;
-        int minutes = (totalSeconds / 60) % 60;
-        int hours = totalSeconds / 3600;
+        long totalSeconds = timeMs / 1000;
+        long seconds = totalSeconds % 60;
+        long minutes = (totalSeconds / 60) % 60;
+        long hours = totalSeconds / 3600;
         if (hours > 0) {
             return formatter.format("%d:%02d:%02d", hours, minutes, seconds).toString();
         } else {

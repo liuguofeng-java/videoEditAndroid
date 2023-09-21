@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/page_bg"
+    android:orientation="vertical"
     tools:context=".activity.SelectVideoActivity">
 
     <!--导航栏-->
@@ -17,5 +18,11 @@
         android:theme="@style/ToolBarTheme"
         app:title="选择视频"
         app:titleTextColor="@color/text_color" />
+
+    <!--列表-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>
