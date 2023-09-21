@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <color name="color_primary">#1b1b25</color>
+    <color name="color_primary_variant">#1b1b25</color>
+    <color name="color_secondary">#FF03DAC5</color>
+    <color name="color_secondary_variant">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
+
+    <!--编辑视频-->
+    <color name="video_edit_save_but">#272731</color>
+    <color name="video_edit_export_but">#ed527a</color>
+
+    <!--按钮按下颜色-->
+    <color name="but_press">#3d333c</color>
+
+    <!--文字颜色-->
+    <color name="text_color">#FFFFFFFF</color>
 </resources>

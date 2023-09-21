@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="1024dp"
+    android:height="1024dp"
+    android:viewportWidth="1024"
+    android:viewportHeight="1024">
+
+    <path
+        android:fillColor="@color/video_edit_text_color"
+        android:pathData="M782 273H242v478h179v0.31a40.338 40.338 0 0 1 4.339-0.305L426 751c22.091 0 40
+17.909 40 40s-17.909 40-40 40c-1.693 0-3.362-0.105-5-0.31v0.31H222c-33.137
+0-60-26.863-60-60V253c0-33.137 26.863-60 60-60h580c33.137 0 60 26.863 60
+60v176c0 22.091-17.909 40-40 40s-40-17.909-40-40V273z m20 263c33.137 0 60 26.863
+60 60v175c0 33.137-26.863 60-60 60H588c-33.137 0-60-26.863-60-60V596c0-33.137
+26.863-60 60-60h214z m-20 80H608v135h174V616z" />
+</vector>

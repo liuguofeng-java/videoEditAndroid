@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VideoEditAndroid.NoActionBar"
         tools:targetApi="31">
+
+
+        <activity
+            android:name="com.video.activity.EditVideoActivity"
+            android:exported="false"/>
+
         <activity
             android:name="com.video.activity.MainActivity"
             android:exported="true">

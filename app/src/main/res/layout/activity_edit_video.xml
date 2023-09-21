@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/video_edit_buts_back"
+    android:orientation="vertical"
+    tools:context=".activity.EditVideoActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!--顶部按钮-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="40dp">
+
+            <Button
+                android:id="@+id/save"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@+id/export_video"
+                android:background="@drawable/but_edit_save"
+                android:text="保存"
+                android:textColor="@color/text_color"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/export_video"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/but_edit_export"
+                android:text="导出"
+                android:textColor="@color/text_color"
+                android:textStyle="bold" />
+        </RelativeLayout>
+        <!--播放器-->
+        <RelativeLayout
+            android:id="@+id/rl_preview"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:background="@color/video_edit_sub_back_color"
+            tools:ignore="ExtraText">
+
+            <com.google.android.exoplayer2.ui.PlayerView
+                android:id="@+id/video_player"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                app:surface_type="texture_view"
+                app:use_controller="false" />
+
+        </RelativeLayout>
+
+        <!--播放控制按钮-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/video_edit_buts_back">
+
+            <TextView
+                android:id="@+id/current_position"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="00:00/00:00"
+                android:textColor="@color/video_edit_text_color" />
+
+            <View
+                android:id="@+id/play_pause_but"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/vector_play" />
+
+
+        </RelativeLayout>
+
+
+        <!--进度条-->
+        <com.video.timeline.VideoTimeLineView
+            android:id="@+id/time_line_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/text_color" />
+
+        <!--调整按钮-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tab_buts"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+    </LinearLayout>
+
+</RelativeLayout>
