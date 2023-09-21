@@ -1,7 +1,6 @@
 package com.video.activity;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,11 +10,11 @@ import androidx.annotation.NonNull;
 import com.hjq.permissions.OnPermissionCallback;
 import com.hjq.permissions.Permission;
 import com.hjq.permissions.XXPermissions;
+import com.video.R;
 import com.video.core.BaseActivity;
 import com.video.databinding.ActivityMainBinding;
 import com.video.utils.StatusBarUtil;
 
-import java.io.File;
 import java.util.List;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
@@ -35,11 +34,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        if (id == binding.videoEdit.getId()) {
+        if (id == R.id.video_edit) {
             videoEditBut();
         }
     }
-
 
     /**
      * 点击视频编辑按钮

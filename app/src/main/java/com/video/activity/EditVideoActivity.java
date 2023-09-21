@@ -41,7 +41,8 @@ public class EditVideoActivity extends BaseActivity implements View.OnClickListe
     private final TabButsAdapter adapter = new TabButsAdapter();
     // 播放器
     private ExoPlayer mVideo;
-    private float volume;
+    // 声音大小
+    private final float volume = 1.0f;
     //定时器
     private final Timer timer = new Timer();
     // 选择的片段
@@ -55,11 +56,17 @@ public class EditVideoActivity extends BaseActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         binding = ActivityEditVideoBinding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
-        StatusBarUtil.setStatusBarColor(this);
 
         // 初始化
         init();
 
+        // 初始化播放器
+        initPlayer();
+
+        // 初始化事件
+        initEvent();
+
+        StatusBarUtil.setStatusBarColor(this);
         int statusBarHeight = StatusBarUtil.getStatusBarHeight(this);
         binding.root.setPadding(0, statusBarHeight, 0, 0);
     }
@@ -107,10 +114,9 @@ public class EditVideoActivity extends BaseActivity implements View.OnClickListe
     }
 
     /**
-     * 初始化视频
+     * 初始化播放器
      */
-    private void initVideo() {
-
+    private void initPlayer() {
         //设置视频播放器
         mVideo = new ExoPlayer.Builder(this).build();
         binding.videoPlayer.setPlayer(mVideo);
@@ -124,7 +130,7 @@ public class EditVideoActivity extends BaseActivity implements View.OnClickListe
 //                    .build();
 //            mVideo.addMediaItem(mediaItem);
 //        }
-        volume = mVideo.getVolume();
+//        volume = mVideo.getVolume();
         mVideo.setVolume(0);
         mVideo.prepare();
 
@@ -139,7 +145,6 @@ public class EditVideoActivity extends BaseActivity implements View.OnClickListe
         }
 
         binding.timeLineView.updateVideos();
-        initEvent();
     }
 
     /**
@@ -154,6 +159,8 @@ public class EditVideoActivity extends BaseActivity implements View.OnClickListe
         binding.exportVideo.setOnClickListener(this);
         // 保存进度按钮
         binding.save.setOnClickListener(this);
+        // 添加视频按钮
+        binding.addVideo.setOnClickListener(this);
         // 监听进度条滑动
         binding.timeLineView.timeChangeListener(new VideoPlayerOperate() {
             @Override
@@ -331,6 +338,11 @@ public class EditVideoActivity extends BaseActivity implements View.OnClickListe
 //            intent.putExtra(Constant.SRC_VIDEO_KEY, getIntent().getStringExtra(Constant.SRC_VIDEO_KEY));
             startActivity(intent);
         } else if (id == R.id.save) {
+        } else if (id == R.id.add_video) {
+            // 添加视频
+            Intent intent = new Intent();
+            intent.setClass(EditVideoActivity.this, SelectVideoActivity.class);
+            startActivityForResult(intent, 100);
         }
     }
 

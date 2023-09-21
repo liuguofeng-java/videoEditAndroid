@@ -6,14 +6,18 @@
     <color name="color_secondary_variant">#FF018786</color>
     <color name="black">#FF000000</color>
 
+    <!--头部颜色-->
+    <color name="back_bg">#1b1b25</color>
+    <!--页面背景-->
+    <color name="page_bg">#2C2C39</color>
+    <!--文字颜色-->
+    <color name="text_color">#FFFFFFFF</color>
+    <!--按钮按下颜色-->
+    <color name="but_press">#3d333c</color>
 
     <!--编辑视频-->
     <color name="video_edit_save_but">#272731</color>
     <color name="video_edit_export_but">#ed527a</color>
 
-    <!--按钮按下颜色-->
-    <color name="but_press">#3d333c</color>
 
-    <!--文字颜色-->
-    <color name="text_color">#FFFFFFFF</color>
 </resources>

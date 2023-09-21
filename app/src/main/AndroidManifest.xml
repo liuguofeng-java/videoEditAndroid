@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- 文件读取权限 -->
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
@@ -25,14 +24,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VideoEditAndroid.NoActionBar"
         tools:targetApi="31">
-
-
         <activity
-            android:name="com.video.activity.EditVideoActivity"
+            android:name=".activity.SelectVideoActivity"
             android:exported="false" />
-
         <activity
-            android:name="com.video.activity.MainActivity"
+            android:name=".activity.EditVideoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
