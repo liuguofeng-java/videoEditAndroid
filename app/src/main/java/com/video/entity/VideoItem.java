@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @author liuguofeng
  * @data 2023-9-21
  */
-public class CopyVideoItem implements Serializable {
+public class VideoItem implements Serializable {
 
     /**
      * 开始时间

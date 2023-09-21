@@ -82,7 +82,14 @@
                 android:layout_centerInParent="true"
                 android:background="@drawable/vector_play" />
 
-
+            <!--添加按钮-->
+            <View
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/vector_add" />
         </RelativeLayout>
 
 

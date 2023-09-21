@@ -16,7 +16,7 @@ import com.video.R;
 import com.video.adapter.TabButsAdapter;
 import com.video.core.BaseActivity;
 import com.video.databinding.ActivityEditVideoBinding;
-import com.video.entity.CopyVideoItem;
+import com.video.entity.VideoItem;
 import com.video.entity.TabButsItem;
 import com.video.timeline.bean.TrackEnum;
 import com.video.timeline.bean.VideoClip;
@@ -36,17 +36,18 @@ public class EditVideoActivity extends BaseActivity implements View.OnClickListe
 
     private ActivityEditVideoBinding binding;
     // 视频进度
-    private List<CopyVideoItem> copyVideoItems;
+    private final List<VideoItem> videoItems = new ArrayList<>();
+    // 底部按钮Adapter
+    private final TabButsAdapter adapter = new TabButsAdapter();
     // 播放器
     private ExoPlayer mVideo;
     private float volume;
     //定时器
     private final Timer timer = new Timer();
-
     // 选择的片段
     private int checkedIndex = 0;
+    // 底部按钮数据
     private List<TabButsItem> tabButsList;
-    TabButsAdapter adapter = new TabButsAdapter();
 
 
     @Override
@@ -82,7 +83,7 @@ public class EditVideoActivity extends BaseActivity implements View.OnClickListe
     private void tagButs() {
         tabButsList = new ArrayList<>();
         tabButsList.add(new TabButsItem("删除", R.drawable.vector_tab_delete));
-        CopyVideoItem videoItem = copyVideoItems.get(checkedIndex);
+        VideoItem videoItem = videoItems.get(checkedIndex);
         if (videoItem.getIsVoice() == 1) {
             tabButsList.add(new TabButsItem("声音", R.drawable.vector_tab_sound));
         } else {
@@ -113,7 +114,7 @@ public class EditVideoActivity extends BaseActivity implements View.OnClickListe
         //设置视频播放器
         mVideo = new ExoPlayer.Builder(this).build();
         binding.videoPlayer.setPlayer(mVideo);
-//        for (CopyVideoItem item : copyVideoItems) {
+//        for (CopyVideoItem item : videoItems) {
 //            MediaItem mediaItem = new MediaItem.Builder()
 //                    .setUri(videoPath)
 //                    .setClippingConfiguration(new MediaItem.ClippingConfiguration.Builder()
@@ -131,8 +132,8 @@ public class EditVideoActivity extends BaseActivity implements View.OnClickListe
         //视频进度条
         binding.timeLineView.addTrack(TrackEnum.VIDEO_TRACK, true);
 //        int duration = VideoUtils.getDuration(videoPath);
-        for (int i = 0; i < copyVideoItems.size(); i++) {
-            CopyVideoItem item = copyVideoItems.get(i);
+        for (int i = 0; i < videoItems.size(); i++) {
+            VideoItem item = videoItems.get(i);
 //            binding.timeLineView.addVideo(0, TrackEnum.VIDEO_TRACK, duration, videoPath,
 //                    item.getStartTime(), item.getEndTime());
         }
@@ -233,7 +234,7 @@ public class EditVideoActivity extends BaseActivity implements View.OnClickListe
                                 .build())
                         .build();
                 mVideo.addMediaItem(index, mediaItem);
-                CopyVideoItem copyVideoItem = copyVideoItems.get(index);
+                VideoItem copyVideoItem = videoItems.get(index);
                 copyVideoItem.setStartTime(videoClip.getStartAtMs());
                 copyVideoItem.setEndTime(videoClip.getEndAtMs());
 
@@ -275,7 +276,7 @@ public class EditVideoActivity extends BaseActivity implements View.OnClickListe
                         long vCurrentPosition = vItemCurrentPosition + vCompleteLen;
                         binding.timeLineView.updateTime(vCurrentPosition);
                         updateVideoProgress(vCurrentPosition);
-                        CopyVideoItem copyVideoItem = copyVideoItems.get(vCurrentIndex);
+                        VideoItem copyVideoItem = videoItems.get(vCurrentIndex);
                         mVideo.setVolume(copyVideoItem.getIsVoice() == 0 ? 0 : volume);
                         hideTagButs();
                     } else {
@@ -326,7 +327,7 @@ public class EditVideoActivity extends BaseActivity implements View.OnClickListe
             mVideo.pause();
             Intent intent = new Intent();
 //            intent.setClass(this, ExportVideoActivity.class);
-            intent.putExtra("videoClips", (Serializable) copyVideoItems);
+            intent.putExtra("videoClips", (Serializable) videoItems);
 //            intent.putExtra(Constant.SRC_VIDEO_KEY, getIntent().getStringExtra(Constant.SRC_VIDEO_KEY));
             startActivity(intent);
         } else if (id == R.id.save) {
@@ -350,7 +351,7 @@ public class EditVideoActivity extends BaseActivity implements View.OnClickListe
                 showToast("至少有一个片段!");
                 return;
             }
-            copyVideoItems.remove(checkedIndex);
+            videoItems.remove(checkedIndex);
             mVideo.removeMediaItem(checkedIndex);
             videoClips.remove(checkedIndex);
             binding.timeLineView.updateVideos();
@@ -366,7 +367,7 @@ public class EditVideoActivity extends BaseActivity implements View.OnClickListe
             showToast("删除成功!");
         } else if (id == R.drawable.vector_tab_mute || id == R.drawable.vector_tab_sound) {
             // 设置-静音和声音
-            CopyVideoItem videoItem = copyVideoItems.get(checkedIndex);
+            VideoItem videoItem = videoItems.get(checkedIndex);
             videoItem.setIsVoice(id == R.drawable.vector_tab_mute ? 1 : 0);
             tagButs();
         } else {
