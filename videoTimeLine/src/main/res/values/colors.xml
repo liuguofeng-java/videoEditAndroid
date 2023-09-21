@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--编辑视频背景颜色-->
+    <color name="video_edit_back_color">#000000</color>
+    <color name="video_edit_sub_back_color">#17171f</color>
+
+    <!--编辑视频文字颜色-->
+    <color name="video_edit_text_color">#d7d7df</color>
+    <!--控制按钮背景-->
+    <color name="video_edit_buts_back">#17171f</color>
+    <!--剪辑轨道颜色-->
+    <color name="video_edit_track_color">#ffff</color>
+    <!--剪辑轨道耳朵-->
+    <color name="video_edit_ear_color">#e0e0e8</color>
+    <!--时间刻度-->
+    <color name="video_edit_scale_color">#e0e0e8</color>
+    <!--时间刻度文字-->
+    <color name="video_edit_scale_text_color">#e0e0e8</color>
+
+    <!--音频文字颜色-->
+    <color name="video_edit_audio_text_color">#1774c5</color>
+    <!--音频背景-->
+    <color name="video_edit_audio_back_color">#8fd7fd</color>
+    <!--波形颜色-->
+    <color name="video_edit_audio_waveform_color">#33b4fd</color>
+
+</resources>
+

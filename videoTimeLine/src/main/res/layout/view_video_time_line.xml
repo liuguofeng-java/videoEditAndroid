@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.video.timeline.widget.ZoomFrameLayout
+        android:id="@+id/zoomFrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/video_edit_back_color"
+        android:paddingTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <com.video.timeline.widget.SelectAreaView
+            android:id="@+id/selectAreaView"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="40dp"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <View
+            android:id="@+id/lineFrame"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:background="@color/video_edit_track_color" />
+
+        <com.video.timeline.widget.RulerView
+            android:id="@+id/rulerView"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="20dp" />
+
+    </com.video.timeline.widget.ZoomFrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

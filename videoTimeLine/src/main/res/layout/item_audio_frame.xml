@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:paddingRight="1dp">
+
+    <com.video.timeline.widget.RoundRectMask
+        android:id="@+id/mask"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:background="@color/video_edit_audio_back_color" />
+
+    <com.video.timeline.soundfile.WaveformView
+        android:id="@+id/waveform"
+        android:layout_width="match_parent"
+        android:layout_gravity="right"
+        android:layout_height="30dp"/>
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:id="@+id/audio_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:text="你好"
+        android:textColor="@color/video_edit_audio_text_color"
+        android:textSize="12sp" />
+
+</FrameLayout>

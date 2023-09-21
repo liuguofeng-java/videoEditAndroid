@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="300dp"
+    android:viewportWidth="100"
+    android:viewportHeight="300">
+
+
+    <path
+        android:fillColor="@color/video_edit_track_color"
+        android:pathData="M11 300L89 300C95.08 300 100 295.08 100 289L100 11C100 4.92 95.08 0 89 0L11
+0C4.92 0 0 4.92 0 11L0 289C0 295.08 4.92 300 11 300Z" />
+    <path
+        android:fillColor="@color/video_edit_ear_color"
+        android:pathData="M50.5 228L50.5 228C52.99 228 55 225.99 55 223.5L55 77.5C55 75.01 52.99 73 50.5
+73L50.5 73C48.01 73 46 75.01 46 77.5L46 223.5C46 225.99 48.01 228 50.5 228Z" />
+</vector>

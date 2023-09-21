@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
 }
-
 android {
     namespace 'com.video'
     compileSdk 33
@@ -33,6 +33,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.3.2'
+    }
 }
 
 dependencies {
@@ -43,4 +47,15 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    // 视频播放器
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.18.7'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.18.7'
+
+    // 申请权限
+    implementation 'com.github.getActivity:XXPermissions:18.0'
+
+    //ffmpeg调用
+    //极速版 (预计占用 4M 左右空间)，主要移除了一些不常用的编解码器
+    implementation 'com.github.microshow:RxFFmpeg:4.9.0-lite'
 }
