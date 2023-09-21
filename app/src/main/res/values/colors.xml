@@ -14,6 +14,11 @@
     <color name="text_color">#FFFFFFFF</color>
     <!--按钮按下颜色-->
     <color name="but_press">#3d333c</color>
+    <!--列表背景-->
+    <color name="list_bg">#353035</color>
+
+    <!--选择按钮-->
+    <color name="select_video_but">#ed527a</color>
 
     <!--编辑视频-->
     <color name="video_edit_save_but">#272731</color>

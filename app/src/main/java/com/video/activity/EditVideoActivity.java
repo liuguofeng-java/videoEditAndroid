@@ -120,31 +120,9 @@ public class EditVideoActivity extends BaseActivity implements View.OnClickListe
         //设置视频播放器
         mVideo = new ExoPlayer.Builder(this).build();
         binding.videoPlayer.setPlayer(mVideo);
-//        for (CopyVideoItem item : videoItems) {
-//            MediaItem mediaItem = new MediaItem.Builder()
-//                    .setUri(videoPath)
-//                    .setClippingConfiguration(new MediaItem.ClippingConfiguration.Builder()
-//                            .setStartPositionMs(item.getStartTime())
-//                            .setEndPositionMs(item.getEndTime())
-//                            .build())
-//                    .build();
-//            mVideo.addMediaItem(mediaItem);
-//        }
-//        volume = mVideo.getVolume();
-        mVideo.setVolume(0);
-        mVideo.prepare();
 
-        //初始化进度条
-        //视频进度条
+        //添加化进度条
         binding.timeLineView.addTrack(TrackEnum.VIDEO_TRACK, true);
-//        int duration = VideoUtils.getDuration(videoPath);
-        for (int i = 0; i < videoItems.size(); i++) {
-            VideoItem item = videoItems.get(i);
-//            binding.timeLineView.addVideo(0, TrackEnum.VIDEO_TRACK, duration, videoPath,
-//                    item.getStartTime(), item.getEndTime());
-        }
-
-        binding.timeLineView.updateVideos();
     }
 
     /**
@@ -384,6 +362,45 @@ public class EditVideoActivity extends BaseActivity implements View.OnClickListe
             tagButs();
         } else {
             showToast("待开发!");
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {//选择文件返回
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 100 && requestCode == 100) {
+            List<String> selectList = data.getStringArrayListExtra("selectList");
+
+
+            for (String videoPath : selectList) {
+                // 获取视频长度
+                int duration = VideoUtils.getDuration(videoPath);
+
+                // 添加片段
+                MediaItem mediaItem = new MediaItem.Builder()
+                        .setUri(videoPath)
+                        .setClippingConfiguration(new MediaItem.ClippingConfiguration.Builder()
+                                .setStartPositionMs(0)
+                                .setEndPositionMs(duration)
+                                .build())
+                        .build();
+                mVideo.addMediaItem(mediaItem);
+
+                // 添加进度
+                binding.timeLineView.addVideo(0, TrackEnum.VIDEO_TRACK, duration, videoPath,
+                        0, duration);
+
+                videoItems.add(new VideoItem() {{
+                    setPath(videoPath);
+                    setStartTime(0L);
+                    setEndTime((long) duration);
+                    setIsVoice(1);
+                }});
+            }
+            mVideo.prepare();
+
+            // 更新进度
+            binding.timeLineView.updateVideos();
         }
     }
 }

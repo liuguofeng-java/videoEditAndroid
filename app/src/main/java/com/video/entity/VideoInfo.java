@@ -2,12 +2,14 @@ package com.video.entity;
 
 import android.graphics.Bitmap;
 
+import java.io.Serializable;
+
 /**
  * 视频信息
  * @author liuguofeng
  * @data 2023-9-21
  */
-public class VideoInfo {
+public class VideoInfo implements Serializable {
     // 视频路径
     private String path;
 
