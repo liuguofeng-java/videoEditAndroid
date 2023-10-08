@@ -14,6 +14,8 @@
     <color name="text_color">#FFFFFFFF</color>
     <!--按钮按下颜色-->
     <color name="but_press">#3d333c</color>
+    <!--按钮颜色-->
+    <color name="but_primary">#0082fc</color>
     <!--列表背景-->
     <color name="list_bg">#353035</color>
 

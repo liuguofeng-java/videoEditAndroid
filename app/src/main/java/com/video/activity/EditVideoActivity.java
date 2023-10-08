@@ -135,8 +135,6 @@ public class EditVideoActivity extends BaseActivity implements View.OnClickListe
         binding.playPauseBut.setOnClickListener(this);
         // 导出按钮
         binding.exportVideo.setOnClickListener(this);
-        // 保存进度按钮
-        binding.save.setOnClickListener(this);
         // 添加视频按钮
         binding.addVideo.setOnClickListener(this);
         // 监听进度条滑动
@@ -219,9 +217,9 @@ public class EditVideoActivity extends BaseActivity implements View.OnClickListe
                                 .build())
                         .build();
                 mVideo.addMediaItem(index, mediaItem);
-                VideoItem copyVideoItem = videoItems.get(index);
-                copyVideoItem.setStartTime(videoClip.getStartAtMs());
-                copyVideoItem.setEndTime(videoClip.getEndAtMs());
+                VideoItem videoItem = videoItems.get(index);
+                videoItem.setStartTime(videoClip.getStartAtMs());
+                videoItem.setEndTime(videoClip.getEndAtMs());
 
                 // 找到播放位置
                 long timeValue = binding.timeLineView.timeLineValue.getTime();
@@ -261,8 +259,8 @@ public class EditVideoActivity extends BaseActivity implements View.OnClickListe
                         long vCurrentPosition = vItemCurrentPosition + vCompleteLen;
                         binding.timeLineView.updateTime(vCurrentPosition);
                         updateVideoProgress(vCurrentPosition);
-                        VideoItem copyVideoItem = videoItems.get(vCurrentIndex);
-                        mVideo.setVolume(copyVideoItem.getIsVoice() == 0 ? 0 : volume);
+                        VideoItem videoItem = videoItems.get(vCurrentIndex);
+                        mVideo.setVolume(videoItem.getIsVoice() == 0 ? 0 : volume);
                         hideTagButs();
                     } else {
                         binding.playPauseBut.setBackgroundResource(R.drawable.vector_play);
@@ -311,11 +309,9 @@ public class EditVideoActivity extends BaseActivity implements View.OnClickListe
             // 导出
             mVideo.pause();
             Intent intent = new Intent();
-//            intent.setClass(this, ExportVideoActivity.class);
-            intent.putExtra("videoClips", (Serializable) videoItems);
-//            intent.putExtra(Constant.SRC_VIDEO_KEY, getIntent().getStringExtra(Constant.SRC_VIDEO_KEY));
+            intent.setClass(this, ExportVideoActivity.class);
+            intent.putExtra("videoItem", (Serializable) videoItems);
             startActivity(intent);
-        } else if (id == R.id.save) {
         } else if (id == R.id.add_video) {
             // 添加视频
             Intent intent = new Intent();

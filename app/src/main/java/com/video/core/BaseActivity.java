@@ -61,7 +61,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
             if ((System.currentTimeMillis() - timeMillis) > 2000) {
-
                 timeMillis = System.currentTimeMillis();
             } else {
                 moveTaskToBack(true);

@@ -25,6 +25,9 @@
         android:theme="@style/Theme.VideoEditAndroid.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".activity.ExportVideoActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.SelectVideoActivity"
             android:exported="false" />
         <activity

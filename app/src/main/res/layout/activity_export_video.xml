@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_bg"
+    android:orientation="vertical"
+    tools:context=".activity.ExportVideoActivity">
+
+    <!--导航栏-->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_register_back"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/back_bg"
+        app:title="导出视频" />
+
+    <com.video.view.ExportProgressView
+        android:id="@+id/progress_export"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="20dp"
+        android:background="@color/black"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:id="@+id/export_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:textColor="#43e577"
+        android:textSize="20sp" />
+
+</LinearLayout>
