@@ -136,11 +136,11 @@ public class SelectVideoActivity extends BaseActivity {
      * @param filePath 视频路径
      */
     public Bitmap getVideoThumbnail(String filePath) {
-        Bitmap b = null;
+        Bitmap bitmap = null;
         MediaMetadataRetriever retriever = new MediaMetadataRetriever();
         try {
             retriever.setDataSource(filePath);
-            b = retriever.getFrameAtTime();
+            bitmap = retriever.getFrameAtTime();
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         } finally {
@@ -148,10 +148,9 @@ public class SelectVideoActivity extends BaseActivity {
                 retriever.release();
             } catch (IOException e) {
                 e.printStackTrace();
-//                throw new RuntimeException(e);
             }
         }
-        return b;
+        return bitmap;
     }
 
     /**

@@ -365,13 +365,15 @@ public class EditVideoActivity extends BaseActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * 选择文件返回
+     */
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {//选择文件返回
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == 100 && requestCode == 100) {
             List<String> selectList = data.getStringArrayListExtra("selectList");
-
-
+            assert selectList != null;
             for (String videoPath : selectList) {
                 // 获取视频长度
                 int duration = VideoUtils.getDuration(videoPath);
