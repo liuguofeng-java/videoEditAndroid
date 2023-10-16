@@ -16,6 +16,10 @@
 - [x]  导出视频(问题)
 - [ ] .......
 
+#### 地址
+github https://github.com/liuguofeng-java/videoEditAndroid
+gitee https://gitee.com/liu_guo_feng/video-edit-android
+
 #### 预览
 
 <img src="images/select_video.jpg" style="zoom:50%;" />
